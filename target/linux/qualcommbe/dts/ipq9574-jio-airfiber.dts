@@ -186,6 +186,10 @@
 			phy-mode = "qsgmii";
 			managed = "in-band-status";
 			label = "wan";
+
+			nvmem-cells = <&macaddr_art_0>;
+			nvmem-cell-names = "mac-address";
+
 			phy-handle = <&phy0>;
 			pcs-handle = <&pcs0_ch0>;
 			clocks = <&nsscc NSS_CC_PORT1_MAC_CLK>,
@@ -207,6 +211,10 @@
 			phy-mode = "qsgmii";
 			managed = "in-band-status";
 			label = "lan1";
+
+			nvmem-cells = <&macaddr_art_0>;
+			nvmem-cell-names = "mac-address";
+
 			phy-handle = <&phy1>;
 			pcs-handle = <&pcs0_ch1>;
 			clocks = <&nsscc NSS_CC_PORT2_MAC_CLK>,
@@ -228,6 +236,10 @@
 			phy-mode = "qsgmii";
 			managed = "in-band-status";
 			label = "lan2";
+
+			nvmem-cells = <&macaddr_art_0>;
+			nvmem-cell-names = "mac-address";
+
 			phy-handle = <&phy2>;
 			pcs-handle = <&pcs0_ch2>;
 			clocks = <&nsscc NSS_CC_PORT3_MAC_CLK>,
@@ -249,6 +261,10 @@
 			phy-mode = "qsgmii";
 			managed = "in-band-status";
 			label = "lan3";
+
+			nvmem-cells = <&macaddr_art_0>;
+			nvmem-cell-names = "mac-address";
+
 			phy-handle = <&phy3>;
 			pcs-handle = <&pcs0_ch3>;
 			clocks = <&nsscc NSS_CC_PORT4_MAC_CLK>,
@@ -301,6 +317,10 @@
             phy-mode = "qsgmii";
             managed = "in-band-status";
             label = "lan4";
+
+			nvmem-cells = <&macaddr_art_0>;
+			nvmem-cell-names = "mac-address";
+
             phy-handle = <&phy5>;
             pcs-handle = <&pcs2_ch0>;
             clocks = <&nsscc NSS_CC_PORT6_MAC_CLK>,
@@ -324,4 +344,199 @@
 &pcs2 {
 	status = "okay";
 	qcom,uniphy-mode = "qsgmii";
+};
+
+/* ---- FIX NAND ECC AND PARTITIONS ---- */
+&qpic_nand {
+    pinctrl-0 = <&qpic_snand_default_state>;
+    pinctrl-names = "default";
+    status = "okay";
+
+	flash@0 {
+		compatible = "spi-nand";
+		reg = <0>;
+
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		nand-ecc-engine = <&qpic_nand>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@00000000 {
+				label = "0:sbl1";
+				reg = <0x00000000 0x00180000>;
+				read-only;
+			};
+
+			partition@00180000 {
+				label = "0:sbl1_1";
+				reg = <0x00180000 0x00180000>;
+				read-only;
+			};
+
+			partition@00300000 {
+				label = "0:mibib";
+				reg = <0x00300000 0x00100000>;
+				read-only;
+			};
+
+			partition@00400000 {
+				label = "0:bootconfig";
+				reg = <0x00400000 0x00080000>;
+				read-only;
+			};
+
+			partition@00480000 {
+				label = "0:bootconfig1";
+				reg = <0x00480000 0x00080000>;
+				read-only;
+			};
+
+			partition@00500000 {
+				label = "0:qsee";
+				reg = <0x00500000 0x00380000>;
+				read-only;
+			};
+
+			partition@00880000 {
+				label = "0:qsee_1";
+				reg = <0x00880000 0x00380000>;
+				read-only;
+			};
+
+			partition@00c00000 {
+				label = "0:devcfg_1";
+				reg = <0x00c00000 0x00080000>;
+				read-only;
+			};
+
+			partition@00c80000 {
+				label = "0:devcfg";
+				reg = <0x00c80000 0x00080000>;
+				read-only;
+			};
+
+			partition@00d00000 {
+				label = "0:apdp_1";
+				reg = <0x00d00000 0x00080000>;
+				read-only;
+			};
+
+			partition@00d80000 {
+				label = "0:apdp";
+				reg = <0x00d80000 0x00080000>;
+				read-only;
+			};
+
+			partition@00e00000 {
+				label = "0:tme";
+				reg = <0x00e00000 0x00080000>;
+				read-only;
+			};
+
+			partition@00e80000 {
+				label = "0:tme_1";
+				reg = <0x00e80000 0x00080000>;
+				read-only;
+			};
+
+			partition@00f00000 {
+				label = "0:rpm_1";
+				reg = <0x00f00000 0x00080000>;
+				read-only;
+			};
+
+			partition@00f80000 {
+				label = "0:rpm";
+				reg = <0x00f80000 0x00080000>;
+				read-only;
+			};
+
+			partition@01000000 {
+				label = "0:cdt_1";
+				reg = <0x01000000 0x00080000>;
+				read-only;
+			};
+
+			partition@01080000 {
+				label = "0:cdt";
+				reg = <0x01080000 0x00080000>;
+				read-only;
+			};
+
+			partition@01100000 {
+				label = "0:appsblenv";
+				reg = <0x01100000 0x00080000>;
+			};
+
+			partition@01180000 {
+				label = "0:appsbl_1";
+				reg = <0x01180000 0x00180000>;
+				read-only;
+			};
+
+			partition@01300000 {
+				label = "0:appsbl";
+				reg = <0x01300000 0x00180000>;
+				read-only;
+			};
+
+			partition@01480000 {
+				compatible = "nvmem-cells";
+
+				label = "0:art";
+				reg = <0x01480000 0x00100000>;
+				read-only;
+
+				macaddr_art_0: macaddr@0 {
+						reg = <0x0 0x6>;
+				};
+			};
+			partition@01580000 {
+				label = "0:ethphyfw";
+				reg = <0x01580000 0x00100000>;
+				read-only;
+			};
+
+			partition@01680000 {
+				label = "0:training";
+				reg = <0x01680000 0x00080000>;
+				read-only;
+			};
+
+			partition@01700000 {
+				label = "firmware";
+				reg = <0x01700000 0x0a000000>;
+				compatible = "denx,fit";
+			};
+
+			partition@0b700000 {
+				label = "customfs";
+				reg = <0x0b700000 0x04100000>;
+				read-only;
+			};
+
+			partition@0f800000 {
+				label = "jio-reserved";
+				reg = <0x0f800000 0x00200000>;
+				read-only;
+			};
+
+			partition@0fa00000 {
+				label = "mfg";
+				reg = <0x0fa00000 0x00200000>;
+				read-only;
+			};
+
+			partition@0fc00000 {
+				label = "0:bdf";
+				reg = <0x0fc00000 0x00200000>;
+				read-only;
+			};
+		};
+	};
 };
