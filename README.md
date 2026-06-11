@@ -1,3 +1,42 @@
+# OpenWrt fork for JIDU6J11 (IPQ9574) devices.
+
+## Device variants (collectively called JIDU6J11):
+- ⬜ JIDU6111
+- ⬜ JIDU6411
+- ⚠️ JIDU6611
+- ⬜ JIDU6811
+- ⬜ JIDU6911
+
+## Feature Support Table:
+| Feature                     | JIDU6111 | JIDU6411 | JIDU6611 | JIDU6811 | JIDU6911 |
+|-----------------------------|:---------:|:---------:|:---------:|:---------:|:---------:|
+| WAN                         | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| LAN1                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| LAN2                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| LAN3                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| LAN4                        | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| RGB LEDs                    | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| RESET button                | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| initramfs boot              | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| NAND Flash                  | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| Partition Table             | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| Calibration Data            | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| MAC Addresses               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| BDF Files                   | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| U-Boot Environment (`fw_*`) | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| 2.4 GHz Radio               | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| 5.0 GHz Radio               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| USB 2.0                     | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| USB 3.0                     | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| Sysupgrade                  | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+
+**Legend:**
+- ✅ = Supported / Working
+- ⬜ = Not yet supported / Untested
+- ⚠️ = Partial support (use when needed later)
+- ❌ = Not present on hardware / Not supported
+- 🔍 = Investigation in progress
+
 ![OpenWrt logo](include/logo.png)
 
 OpenWrt Project is a Linux operating system targeting embedded devices. Instead
