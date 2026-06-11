@@ -36,16 +36,6 @@ define Device/UbiFit
 	IMAGE/factory.ubi := append-ubi
 endef
 
-define Device/jio_airfiber
-  $(Device/FitImage)
-  DEVICE_VENDOR := Jio
-  DEVICE_MODEL := AirFiber (IPQ9574)
-  DEVICE_DTS := ipq9574-jio-airfiber
-  KERNEL_NAME := Image
-  IMAGES := squashfs-initramfs-uImage.itb
-  IMAGE/squashfs-initramfs-uImage.itb := append-kernel | pad-to 64k | append-rootfs
-  DEVICE_PACKAGES := kmod-ath12k kmod-ath12k-pci kmod-ath12k-ahb
-endef
-TARGET_DEVICES += jio_airfiber
+include $(SUBTARGET).mk
 
 $(eval $(call BuildImage))

@@ -27,3 +27,46 @@ define Device/qcom_rdp433
 	IMAGE/sysupgrade.bin := append-kernel | pad-to 64k | append-rootfs | pad-rootfs | check-size | append-metadata
 endef
 TARGET_DEVICES += qcom_rdp433
+
+define Device/jiorouter-ax6000-jidu6j11
+    $(call Device/FitImage)
+	$(call Device/UbiFit)
+    DEVICE_VENDOR := JioRouter
+    DEVICE_MODEL := AX6000
+    DEVICE_VARIANT := JIDU6J11
+
+	DEVICE_ALT1_VENDOR := JioRouter
+	DEVICE_ALT1_MODEL := AX6000
+	DEVICE_ALT1_VARIANT := JIDU6411
+
+    DEVICE_ALT2_VENDOR := JioRouter
+	DEVICE_ALT2_MODEL := AX6000
+	DEVICE_ALT2_VARIANT := JIDU6411
+
+	DEVICE_ALT3_VENDOR := JioRouter
+	DEVICE_ALT3_MODEL := AX6000
+	DEVICE_ALT3_VARIANT := JIDU6611
+
+	DEVICE_ALT4_VENDOR := JioRouter
+	DEVICE_ALT4_MODEL := AX6000
+	DEVICE_ALT4_VARIANT := JIDU6711
+
+	DEVICE_ALT5_VENDOR := JioRouter
+	DEVICE_ALT5_MODEL := AX6000
+	DEVICE_ALT5_VARIANT := JIDU6811
+
+	DEVICE_ALT6_VENDOR := JioRouter
+	DEVICE_ALT6_MODEL := AX6000
+	DEVICE_ALT6_VARIANT := JIDU6911
+    
+  	DEVICE_DTS_DIR := ../dts
+    DEVICE_DTS := ipq9574-jiorouter-ax6000-jidu6j11
+    SOC := ipq9574
+    
+    BLOCKSIZE := 128k
+    PAGESIZE := 2048
+    DEVICE_PACKAGES := kmod-ath11k kmod-ath11k-pci ath11k-firmware-qcn9074
+    IMAGES += squashfs-initramfs-uImage.itb
+    IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
+endef
+TARGET_DEVICES += jiorouter-ax6000-jidu6j11
