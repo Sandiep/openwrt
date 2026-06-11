@@ -36,16 +36,22 @@ define Device/UbiFit
 	IMAGE/factory.ubi := append-ubi
 endef
 
-define Device/jio_airfiber
+define Device/jio_6j11
   $(Device/FitImage)
+  $(Device/UbiFit)
   DEVICE_VENDOR := Jio
-  DEVICE_MODEL := AirFiber (IPQ9574)
-  DEVICE_DTS := ipq9574-jio-airfiber
-  KERNEL_NAME := Image
-  IMAGES := squashfs-initramfs-uImage.itb
+  DEVICE_MODEL := JIDU6111 (6J11)
+  SOC := ipq9574
+  DEVICE_DTS := ipq9574-jio-6j11
+  DEVICE_DTS_CONFIG := config@1
+  DEVICE_PACKAGES := kmod-ath12k kmod-ath12k-pci kmod-ath12k-ahb \
+	kmod-ath11k-pci ath11k-firmware-qcn9074 ipq-wifi-jio_6j11
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  IMAGES += squashfs-initramfs-uImage.itb
   IMAGE/squashfs-initramfs-uImage.itb := append-kernel | pad-to 64k | append-rootfs
-  DEVICE_PACKAGES := kmod-ath12k kmod-ath12k-pci kmod-ath12k-ahb
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
 endef
-TARGET_DEVICES += jio_airfiber
+TARGET_DEVICES += jio_6j11
 
 $(eval $(call BuildImage))

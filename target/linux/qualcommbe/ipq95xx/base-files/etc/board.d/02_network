@@ -25,6 +25,7 @@ ipq95xx_setup_interfaces()
         # and eth1/wan uses the dedicated architecture switch bridge port configuration.
         ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
         ;;
+    jio,6j11|\
     jiorouter,jidu6611|\
     jiorouter,ax6000-jidu6j11)
         local mfg_dev

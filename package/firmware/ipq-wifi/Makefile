@@ -14,6 +14,8 @@ PKG_FLAGS:=nonshared
 include $(INCLUDE_DIR)/package.mk
 
 define Build/Compile
+	$(if $(wildcard $(TOPDIR)/package/firmware/ipq-wifi/files/board-*),\
+		$(CP) $(TOPDIR)/package/firmware/ipq-wifi/files/board-* $(PKG_BUILD_DIR)/)
 endef
 
 # Use ath10k-bdencoder from https://github.com/qca/qca-swiss-army-knife.git
@@ -48,6 +50,7 @@ ALLWIFIBOARDS:= \
 	huawei_ap4050dn \
 	ignitenet_ss-w2-ac2600 \
 	iodata_wn-dax3000gr \
+	jio_6j11 \
 	jdcloud_re-cs-02 \
 	jdcloud_re-ss-01 \
 	link_nn6000 \
@@ -244,6 +247,7 @@ $(eval $(call generate-ipq-wifi-package,glinet_gl-b3000,GL.iNet GL-B3000))
 $(eval $(call generate-ipq-wifi-package,huawei_ap4050dn,Huawei AP4050DN))
 $(eval $(call generate-ipq-wifi-package,ignitenet_ss-w2-ac2600,Ignitenet SS-W2-AC2600))
 $(eval $(call generate-ipq-wifi-package,iodata_wn-dax3000gr,I-O DATA WN-DAX3000GR))
+$(eval $(call generate-ipq-wifi-package,jio_6j11,Jio JIDU6111))
 $(eval $(call generate-ipq-wifi-package,jdcloud_re-cs-02,JDCloud RE-CS-02))
 $(eval $(call generate-ipq-wifi-package,jdcloud_re-ss-01,JDCloud RE-SS-01))
 $(eval $(call generate-ipq-wifi-package,link_nn6000,Link NN6000))
