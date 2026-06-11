@@ -26,8 +26,7 @@
 | U-Boot Environment (`fw_*`) | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | 2.4 GHz Radio               | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
 | 5.0 GHz Radio               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| USB 2.0                     | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
-| USB 3.0                     | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| USB 3.0                     | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | Sysupgrade                  | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
 
 **Legend:**
