@@ -107,7 +107,6 @@
 			compatible = "pci17cb,1104";
 			reg = <0 0 0 0 0>;
 			qcom,board_id = <0xb7>;
-			calibration = <&precal_wifi1>;
 		};
 	};
 };
@@ -518,13 +517,6 @@
 				label = "0:art";
 				reg = <0x01480000 0x00100000>;
 				read-only;
-
-				precal_wifi0: precal@0 {   /* 2.4 GHz integrated */
-					reg = <0x0 0x20000>;
-				};
-				precal_wifi1: precal@20000 { /* 5 GHz QCN9000 */
-					reg = <0x20000 0x20000>;
-				};
 			};
 
 			partition@01580000 {
@@ -573,7 +565,6 @@
 		reg = <0xc0000000 0x1000000>;
 		qcom,board_id = <0x30>;
 		qcom,tgt-mem-mode = <0x02>;
-		calibration = <&precal_wifi0>;
 		status = "okay";
 		/* The driver expects a remote processor handle; this is usually
 		   provided by the "qcom,rproc" property in the stock DTS. If your

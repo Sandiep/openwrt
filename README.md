@@ -20,7 +20,7 @@
 | initramfs boot              | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | NAND Flash                  | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | Partition Table             | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| Calibration Data            | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
+| Calibration Data            | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | MAC Addresses               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | BDF Files                   | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
 | U-Boot Environment (`fw_*`) | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
