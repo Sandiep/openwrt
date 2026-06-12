@@ -129,6 +129,7 @@
 &mdio {
 	clock-frequency = <6250000>;
 	pinctrl-0 = <&mdio_pins>;
+	reset-gpios = <&tlmm 60 GPIO_ACTIVE_LOW>;
 	pinctrl-names = "default";
 	status = "okay";
 
@@ -372,29 +373,43 @@
 			reset-names = "mac", "rx", "tx";
 		};
 
-		port@5 { status = "disabled"; };
-
-		port@6 {
-			reg = <6>;
-			status = "okay";
-			phy-mode = "qsgmii";
+		port@5 {
+			reg = <5>;
+			status = "disabled";
+			phy-mode = "sgmii";
 			managed = "in-band-status";
 			label = "lan4";
 			phy-handle = <&phy5>;
-			pcs-handle = <&pcs2_ch0>;
-			clocks = <&nsscc NSS_CC_PORT6_MAC_CLK>,
-				 <&nsscc NSS_CC_PORT6_RX_CLK>,
-				 <&nsscc NSS_CC_PORT6_TX_CLK>;
+			pcs-handle = <&pcs0_ch4>;
+			clocks = <&nsscc NSS_CC_PORT5_MAC_CLK>,
+				 <&nsscc NSS_CC_PORT5_RX_CLK>,
+				 <&nsscc NSS_CC_PORT5_TX_CLK>;
 			clock-names = "mac", "rx", "tx";
-			resets = <&nsscc PORT6_MAC_ARES>,
-				 <&nsscc PORT6_RX_ARES>,
-				 <&nsscc PORT6_TX_ARES>;
+			resets = <&nsscc PORT5_MAC_ARES>,
+				 <&nsscc PORT5_RX_ARES>,
+				 <&nsscc PORT5_TX_ARES>;
 			reset-names = "mac", "rx", "tx";
+		};
+
+		port@6 {
+			status = "disabled";
 		};
 	};
 };
 
 /* Disable unused UNIPHY/PCS */
+&pcs0 {
+	status = "okay";
+	qcom,uniphy-mode = "sgmii";
+
+	pcs0_ch4: pcs-mii@4 {
+		reg = <4>;
+		clocks = <&nsscc NSS_CC_UNIPHY_PORT5_RX_CLK>,
+			 <&nsscc NSS_CC_UNIPHY_PORT5_TX_CLK>;
+		clock-names = "rx", "tx";
+	};
+};
+
 &pcs1 { status = "disabled"; };
 &pcs2 {
 	status = "okay";
