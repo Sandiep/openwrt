@@ -59,6 +59,38 @@
 		vin-supply = <&regulator_fixed_3p3>;
 	};
 
+	reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        wlan_fw_mem: wlan-fw@4b000000 {
+            compatible = "shared-dma-pool";
+            reg = <0x0 0x4b000000 0x0 0x2000000>;
+            no-map;
+        };
+    };
+
+	smp2p-wcss {
+		compatible = "qcom,smp2p";
+		qcom,smem = <435>, <428>;
+		interrupt-parent = <&intc>;
+		interrupts = <GIC_SPI 322 IRQ_TYPE_EDGE_RISING>;
+		mboxes = <&apcs_glb 9>;
+		qcom,local-pid = <0>;
+		qcom,remote-pid = <1>;
+
+		wcss_smp2p_out: master-kernel {
+			qcom,entry-name = "master-kernel";
+			#qcom,smem-state-cells = <1>;
+		};
+
+		wcss_smp2p_in: slave-kernel {
+			qcom,entry-name = "slave-kernel";
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+	};
 
 	gpio-keys {
 		compatible = "gpio-keys";
@@ -589,12 +621,30 @@
 		reg = <0xc0000000 0x1000000>;
 		qcom,board_id = <0x30>;
 		qcom,tgt-mem-mode = <0x02>;
+		qcom,rproc = <&wcss>; 
 		status = "okay";
 		/* The driver expects a remote processor handle; this is usually
 		   provided by the "qcom,rproc" property in the stock DTS. If your
 		   kernel requires it, you may need to add the appropriate phandle
 		   to the WCSS remoteproc. For now, try without. */
 	};
+
+    wcss: remoteproc@cd00000 {
+        compatible = "qcom,ipq9574-wcss-pil";
+        reg = <0x0cd00000 0x10000>,
+              <0x0cd10000 0x10000>,
+              <0x0cd20000 0x10000>;
+        reg-names = "wcss", "q6", "m3";
+        interrupts = <GIC_SPI 319 IRQ_TYPE_EDGE_RISING>,
+                     <GIC_SPI 320 IRQ_TYPE_EDGE_RISING>,
+                     <GIC_SPI 321 IRQ_TYPE_EDGE_RISING>;
+        interrupt-names = "wdog", "fatal", "ready";
+        memory-region = <&wlan_fw_mem>;
+        firmware-name = "IPQ9574/WIFI_FW/q6_fw.mdt";
+        qcom,smem-states = <&wcss_smp2p_out 0>;
+        qcom,smem-state-names = "stop";
+        status = "okay";
+    };
 };
 
 /* ---- USB – full stock configuration ---- */

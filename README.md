@@ -10,23 +10,23 @@
 ## Feature Support Table:
 | Feature                     | JIDU6111 | JIDU6411 | JIDU6611 | JIDU6811 | JIDU6911 |
 |-----------------------------|:---------:|:---------:|:---------:|:---------:|:---------:|
-| WAN                         | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| LAN1                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| LAN2                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| LAN3                        | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| WAN                         | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| LAN1                        | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| LAN2                        | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| LAN3                        | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
 | LAN4                        | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
-| RGB LEDs                    | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| RESET button                | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| initramfs boot              | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| NAND Flash                  | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| Partition Table             | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| RGB LEDs                    | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| RESET button                | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| initramfs boot              | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| NAND Flash                  | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| Partition Table             | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
 | Calibration Data            | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| MAC Addresses               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| MAC Addresses               | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
 | BDF Files                   | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| U-Boot Environment (`fw_*`) | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| U-Boot Environment (`fw_*`) | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
 | 2.4 GHz Radio               | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
-| 5.0 GHz Radio               | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
-| USB 3.0                     | ⬜        | ⬜        | ✅        | ⬜        | ⬜        |
+| 5.0 GHz Radio               | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
+| USB 3.0                     | ⬜        | ⬜        | ✅        | ✅        | ⬜        |
 | Sysupgrade                  | ⬜        | ⬜        | ⬜        | ⬜        | ⬜        |
 
 **Legend:**
