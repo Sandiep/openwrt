@@ -12,6 +12,17 @@ define Device/d-link_dgs-1250-28x
 endef
 TARGET_DEVICES += d-link_dgs-1250-28x
 
+define Device/sirivision_sr-st3408f
+  SOC := rtl9303
+  UIMAGE_MAGIC := 0x93000000
+  DEVICE_VENDOR := Sirivision
+  DEVICE_MODEL := SR-ST3408F
+  DEVICE_PACKAGES := kmod-phy-realtek rtl8261n-firmware
+  IMAGE_SIZE := 13312k
+  $(Device/kernel-lzma)
+endef
+TARGET_DEVICES += sirivision_sr-st3408f
+
 define Device/hasivo_f1100w-4sx-4xgt-common
   SOC := rtl9303
   DEVICE_VENDOR := Hasivo
@@ -68,6 +79,34 @@ define Device/hasivo_s600wp-5gt-2sx-se
   $(Device/kernel-lzma)
 endef
 TARGET_DEVICES += hasivo_s600wp-5gt-2sx-se
+
+define Device/horaco_zx-swtgw2c8f
+  SOC := rtl9303
+  UIMAGE_MAGIC := 0x83800000
+  DEVICE_VENDOR := Horaco
+  DEVICE_MODEL := ZX-SWTGW2C8F
+  IMAGE_SIZE := 12288k
+  $(Device/kernel-lzma)
+  IMAGES += factory.bix
+  IMAGE/factory.bix := \
+	append-kernel | \
+	pad-to 64k | \
+	append-rootfs | \
+	pad-rootfs | \
+	check-size
+endef
+TARGET_DEVICES += horaco_zx-swtgw2c8f
+
+define Device/nicgiga_s100-0800s-m
+  SOC := rtl9303
+  UIMAGE_MAGIC := 0x93030000
+  DEVICE_VENDOR := NicGiga
+  DEVICE_MODEL := S100-0800S-M
+  DEVICE_PACKAGES := kmod-gpio-pca953x
+  IMAGE_SIZE := 29696k
+  $(Device/kernel-lzma)
+endef
+TARGET_DEVICES += nicgiga_s100-0800s-m
 
 define Device/plasmacloud-common
   SOC := rtl9302
@@ -233,16 +272,16 @@ endef
 TARGET_DEVICES += xikestor_sks8310-8x
 
 define Device/zyxel_xgs1010-12-a1
-  SOC := rtl9302
-  UIMAGE_MAGIC := 0x93001010
-  DEVICE_VENDOR := Zyxel
-  DEVICE_MODEL := XGS1010-12
+  $(Device/zyxel_xgs1010-12)
   DEVICE_VARIANT := A1
-  KERNEL_SIZE := 7168k
-  IMAGE_SIZE := 13184k
-  $(Device/kernel-lzma)
 endef
 TARGET_DEVICES += zyxel_xgs1010-12-a1
+
+define Device/zyxel_xgs1010-12-b1
+  $(Device/zyxel_xgs1010-12)
+  DEVICE_VARIANT := B1
+endef
+TARGET_DEVICES += zyxel_xgs1010-12-b1
 
 define Device/zyxel_xgs1210-12-a1
   $(Device/zyxel_xgs1210-12)

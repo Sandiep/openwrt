@@ -326,6 +326,22 @@ define Device/panasonic_m8eg-pn28080k
 endef
 TARGET_DEVICES += panasonic_m8eg-pn28080k
 
+define Device/teltonika_tsw202
+  SOC := rtl8380
+  IMAGE_SIZE := 15168k
+  DEVICE_VENDOR := Teltonika
+  DEVICE_MODEL := TSW202
+  IMAGE/sysupgrade.bin := \
+  	append-kernel | \
+	pad-to 64k | \
+	append-rootfs | \
+	pad-rootfs | \
+	check-size | \
+	append-metadata
+  SUPPORTED_DEVICES := teltonika,tsw202
+endef
+TARGET_DEVICES += teltonika_tsw202
+
 define Device/tplink_sg2008p-v1
   SOC := rtl8380
   KERNEL_SIZE := 6m
@@ -336,6 +352,17 @@ define Device/tplink_sg2008p-v1
   DEVICE_PACKAGES := kmod-hwmon-tps23861
 endef
 TARGET_DEVICES += tplink_sg2008p-v1
+
+define Device/tplink_sg2008p-v3
+  SOC := rtl8380
+  KERNEL_SIZE := 6m
+  IMAGE_SIZE := 26m
+  DEVICE_VENDOR := TP-Link
+  DEVICE_MODEL := SG2008P
+  DEVICE_VARIANT := v3
+  DEVICE_PACKAGES := i2c-tools
+endef
+TARGET_DEVICES += tplink_sg2008p-v3
 
 define Device/tplink_sg2210p-v3
   SOC := rtl8380
